@@ -66,6 +66,12 @@ app.get('/bad', (req, res) => {
   });
 });
 
+app.get('/project', (req, res) => {
+  res.render('project.hbs', {
+    pageTitle : 'Projects'
+  });
+});
+
 // @dev when deploy on HEROKU we need to change port to HEROKU port
 // @previous app.listen(3001, () => .....)
 app.listen(port, () => {
