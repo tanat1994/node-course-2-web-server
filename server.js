@@ -4,6 +4,9 @@ const fs = require('fs');
 
 var app = express();
 
+// @dev get port from HEROKU and rewrite to port 3000
+const port = process.env.PORT || 3000;
+
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 // app.use(express.static(__dirname + '/public'));
@@ -63,6 +66,8 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3001, () => {
-  console.log('Server is running on port 3001..');
+// @dev when deploy on HEROKU we need to change port to HEROKU port
+// @previous app.listen(3001, () => .....)
+app.listen(port, () => {
+  console.log('Server is running on port ', port);
 });
